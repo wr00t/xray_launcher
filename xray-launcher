@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+import time
+import sys
+import os
+import threading
+
+
+class crack(threading.Thread):
+	def __init__(self):
+		threading.Thread.__init__(self)
+	def run(self):
+		time.sleep(1)
+
+
+if __name__ == '__main__':
+	print("""
+		launch xray before time.
+		""")
+	try:
+		argv=""
+		for i in range(len(sys.argv)):
+			if i!=0:
+				argv=argv+""+str(' '.join(sys.argv[1:]))
+		os.system('sudo date -s "Wed, 9 Feb 2022 00:00:00 CST"')
+		thread1=crack()
+		thread1.start()
+		os.system("./xray_linux_amd64 "+argv)
+	except BaseException:
+		input("Error")
+
